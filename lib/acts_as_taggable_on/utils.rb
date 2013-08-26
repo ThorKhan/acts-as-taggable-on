@@ -8,7 +8,7 @@ module ActsAsTaggableOn
 
     module OverallMethods
       def using_postgresql?
-        ::ActiveRecord::Base.connection && ['PostgreSQL', 'PostGIS'].include? ::ActiveRecord::Base.connection.adapter_name
+        ::ActiveRecord::Base.connection && ['PostgreSQL', 'PostGIS'].include?(::ActiveRecord::Base.connection.adapter_name)
       end
 
       def using_sqlite?
