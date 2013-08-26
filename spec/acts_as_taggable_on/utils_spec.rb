@@ -12,6 +12,11 @@ describe ActsAsTaggableOn::Utils do
       TaggableModel.connection.stub(:adapter_name).and_return("PostgreSQL")
       TaggableModel.send(:like_operator).should == "ILIKE"
     end
+    
+    it "should return 'ILIKE' when the adapter is PostGIS" do
+      TaggableModel.connection.stub(:adapter_name).and_return("PostGIS")
+      TaggableModel.send(:like_operator).should == "ILIKE"
+    end
 
     it "should return 'LIKE' when the adapter is not PostgreSQL" do
       TaggableModel.connection.stub(:adapter_name).and_return("MySQL")
